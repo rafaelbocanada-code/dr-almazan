@@ -1,293 +1,641 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Dr. Augusto René Almazán Corral, traumatólogo y ortopedista en Monterrey. Contacto por WhatsApp, teléfono y ubicación.">
-<title>Tarjeta Dr. Almazán</title>
+<title>Dr. Augusto Almazán | Traumatólogo y Ortopedista, Monterrey</title>
+<meta name="description" content="Traumatólogo y ortopedista especialista en cirugía de cadera y pelvis. Consulta por artrosis, fracturas, prótesis y lesiones deportivas en Monterrey.">
+<meta name="theme-color" content="#dae5eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Dr. Augusto Almazán | Traumatólogo y Ortopedista, Monterrey">
+<meta property="og:description" content="Especialista en cirugía de cadera y pelvis, reemplazos articulares, fracturas y artrosis.">
+<meta property="og:image" content="media/doctor.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="media/doctor.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Dr. Augusto René Almazán Corral",
+  "medicalSpecialty": ["Orthopedic", "Traumatology"],
+  "description": "Traumatólogo y ortopedista especialista en cadera y pelvis en Monterrey.",
+  "image": "media/doctor.jpg",
+  "telephone": "+52 81 8122 8122",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 de Mayo 1822, Consultorio 1 (Lobby), Centro Médico CHRISTUS MUGUERZA Hospital Conchita, Nuevo Obispado",
+    "addressLocality": "Monterrey",
+    "addressRegion": "N.L.",
+    "postalCode": "64040",
+    "addressCountry": "MX"
+  }
+}
+</script>
 <style>
-/* Concepto: tarjeta de contacto móvil. Un retrato en video que pasa de sombra a luz; el texto cambia de blanco a tinta azul marino al ritmo de la luz. */
 :root {
-  --stage: #dfe5ea;
-  --stage-shadow: 0 30px 80px rgba(20, 36, 52, .22);
+  --bg: #dae5eb;
+  --bg-2: #ced9df;
+  --ink: #000;
+  --ink-2: rgba(0, 0, 0, .7);
+  --ink-3: rgba(0, 0, 0, .6);
+  --white: #fff;
   --serif: "Instrument Serif", "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  /* Paleta de la tarjeta (mismo look en claro y oscuro) */
-  --c-top: #64707e;
-  --c-mid: #8395a3;
-  --c-light: #dae4eb;
-  --c-ink: #0e1620;
-  --c-ink-2: rgba(14, 22, 32, .62);
-  --c-line: rgba(14, 22, 32, .14);
-  --c-wa: #0f7a55;
-  --c-white: #ffffff;
-
-  /* Los fija el script según el avance del video */
-  --ink: rgb(255, 255, 255);
-  --ink-soft: rgba(255, 255, 255, .72);
-  --ink-line: rgba(255, 255, 255, .55);
-
+  --pad: 24px;
   --ease: cubic-bezier(.2, .8, .2, 1);
-  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  --nav-h: 72px;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --stage: #0f151b; --stage-shadow: 0 30px 80px rgba(0, 0, 0, .55); color-scheme: dark; }
-}
-:root[data-theme="dark"] { --stage: #0f151b; --stage-shadow: 0 30px 80px rgba(0, 0, 0, .55); color-scheme: dark; }
+@media (min-width: 900px) { :root { --pad: clamp(40px, 6.67vw, 96px); --nav-h: 97px; } }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; }
-body { background: var(--stage); color: var(--c-ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+h1, h2, h3, h4, p, dl, dd, ul { margin: 0; padding: 0; }
+h1, h2, h3, h4 { font-weight: 400; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
+.dark :focus-visible { outline-color: #fff; }
+.wrap { padding-inline: var(--pad); max-width: 1440px; margin-inline: auto; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: #000; color: #fff; padding: 10px 16px; font-size: 14px; }
+.skip:focus { top: 12px; }
 
-.stage { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; }
-.card {
-  position: relative; width: 100%; max-width: 430px; overflow: hidden; isolation: isolate;
-  background: linear-gradient(180deg, var(--c-top) 0%, var(--c-mid) 38%, #c2cfda 56%, var(--c-light) 68%, var(--c-light) 100%);
-}
-@media (min-width: 520px) {
-  .stage { padding: 32px 0; }
-  .card { border-radius: 34px; box-shadow: var(--stage-shadow); }
-}
+.eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .015em; text-transform: uppercase; }
+.sec-num { font-size: 11px; font-weight: 500; letter-spacing: .24em; }
+.serif { font-family: var(--serif); font-weight: 400; }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 26px; border-radius: 12px; font-size: 15px; font-weight: 500; white-space: nowrap; transition: transform .3s var(--ease), background .25s, color .25s, box-shadow .3s; }
+.btn:active { transform: scale(.97); }
+.btn-dark { background: #000; color: #fff; }
+.btn-dark:hover { box-shadow: 0 10px 26px rgba(0, 0, 0, .25); transform: translateY(-1px); }
+.btn-light { background: #fff; color: #000; border: 1px solid #000; }
+.btn-light:hover { background: #000; color: #fff; }
 
-/* ---------- Retrato en video ---------- */
-.hero { position: absolute; inset: 0 0 auto 0; height: 500px; overflow: hidden; z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); }
-.hero-shift { position: absolute; inset: -14px; transform: translate3d(calc(var(--mx, 0) * -7px), calc(var(--my, 0) * -5px), 0); transition: transform .5s var(--ease); }
-.hero-shift { background: linear-gradient(180deg, var(--h0, #64707e) 0%, var(--h1, #8395a3) 48%, var(--h2, #697784) 100%); }
-.hero video, .hero .poster { position: absolute; top: 14px; left: 19%; width: 102%; height: auto; display: block;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 44px); mask-image: linear-gradient(90deg, transparent 0, #000 44px); }
-.hero video { transform-origin: 38% 22%; animation: kenburns 5.4s var(--ease) both; }
-.hero .poster { opacity: 1; }
+/* ---------- Nav ---------- */
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--nav-h); transition: background .35s, box-shadow .35s, backdrop-filter .35s; }
+.nav.scrolled { background: rgba(218, 229, 235, .82); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); box-shadow: 0 1px 0 rgba(0, 0, 0, .06); }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.logo { white-space: nowrap; font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: .005em; }
+.links { display: none; align-items: center; gap: 0; margin-left: auto; }
+.links a { position: relative; padding: 8px 0; white-space: nowrap; margin-left: clamp(20px, 2.8vw, 40px); font-size: 14px; font-weight: 500; }
+.links a:first-child { margin-left: 0; }
+.links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: #000; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.links a:hover::after, .links a.on::after { transform: scaleX(1); }
+.nav-cta { display: none; height: 49px; padding: 0 28px; margin-left: clamp(20px, 2.8vw, 40px); white-space: nowrap; border-radius: 12px; background: #000; color: #fff; font-size: 14px; font-weight: 500; align-items: center; transition: transform .3s var(--ease), box-shadow .3s; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0, 0, 0, .25); }
+.burger { width: 44px; height: 44px; margin-right: -10px; display: grid; place-items: center; }
+.burger span { display: block; width: 22px; height: 1.5px; background: #000; position: relative; transition: background .2s; }
+.burger span::before, .burger span::after { content: ""; position: absolute; left: 0; width: 22px; height: 1.5px; background: #000; transition: transform .35s var(--ease); }
+.burger span::before { top: -7px; } .burger span::after { top: 7px; }
+.menu-open .burger span { background: transparent; }
+.menu-open .burger span::before { transform: translateY(7px) rotate(45deg); }
+.menu-open .burger span::after { transform: translateY(-7px) rotate(-45deg); }
+.drawer { position: fixed; inset: 0; z-index: 40; background: var(--bg); padding: calc(var(--nav-h) + 24px) var(--pad) 32px; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .35s, transform .45s var(--ease), visibility 0s .35s; }
+.menu-open .drawer { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.drawer a.l { font-family: var(--serif); font-size: 38px; line-height: 1.1; padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, .1); }
+.drawer .btn { margin-top: auto; height: 54px; }
+.menu-open { overflow: hidden; }
+@media (min-width: 1000px) { .links, .nav-cta { display: flex; } .burger, .drawer { display: none; } }
 
-/* ---------- Contenido ---------- */
-.content { position: relative; z-index: 2; padding-block: 24px 30px;
-  padding-left: max(25px, env(safe-area-inset-left, 0px)); padding-right: max(25px, env(safe-area-inset-right, 0px)); }
-.top { min-height: 404px; display: flex; flex-direction: column; }
-.bar { display: flex; align-items: center; justify-content: space-between; min-height: 38px; }
-.logo { font-family: var(--serif); font-size: 26px; line-height: 1; color: var(--ink); letter-spacing: .005em; }
-.pill { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--ink-line); color: var(--ink); font-size: 14px; font-weight: 500;
-  background: rgba(255, 255, 255, .04); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background .25s, transform .25s var(--ease); }
-.pill:hover { background: rgba(255, 255, 255, .16); }
-.eyebrow { margin: 26px 0 0; font-size: 10.5px; font-weight: 500; letter-spacing: .035em; text-transform: uppercase; color: var(--ink); }
-.name { margin: 22px 0 0; max-width: 205px; font-family: var(--serif); font-weight: 400; font-size: 43px; line-height: .98; letter-spacing: -.005em; color: var(--ink); }
-.name .last { color: var(--ink-soft); }
+/* ---------- Hero ---------- */
+.hero { position: relative; background: var(--bg); overflow: hidden; }
+.hero-in { position: relative; max-width: 1440px; margin: 0 auto; padding: calc(var(--nav-h) + 8px) var(--pad) 0; }
+.portrait { position: relative; margin: 0 calc(var(--pad) * -1); height: 400px; overflow: hidden; }
+.hero { overflow-x: clip; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 69% 0; transform: scale(1.06); transform-origin: 70% 20%; animation: settle 2.4s var(--ease) .1s both; will-change: transform; }
+.portrait::after { content: ""; position: absolute; inset: auto 0 -1px 0; height: 60%; background: linear-gradient(to bottom, rgba(218, 229, 235, 0), var(--bg) 92%); pointer-events: none; }
+.hero-copy { position: relative; z-index: 2; margin-top: -64px; }
+@media (min-width: 600px) and (max-width: 899px) { .portrait { height: 520px; } .portrait img { object-position: 64% 0; } .hero-copy { margin-top: -90px; } }
+.hero .eyebrow { color: var(--ink-3); }
+.h1 { margin-top: 14px; font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 13vw, 64px); line-height: 1; letter-spacing: -.008em; }
+.h1 .last { color: rgba(0, 0, 0, .4); display: block; }
 .w { display: inline-block; overflow: hidden; vertical-align: top; padding: .14em .04em .12em 0; margin: -.14em 0 -.12em; }
-.wi { display: inline-block; will-change: transform; }
+.wi { display: inline-block; animation: word 1.05s var(--ease) var(--d, 0s) both; }
+.sub { margin-top: 22px; max-width: 420px; font-size: 18px; line-height: 1.45; color: var(--ink-2); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.cta-row .btn { flex: 1 1 auto; }
+@media (min-width: 900px) { .cta-row .btn { flex: 0 0 auto; } }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+@media (min-width: 900px) { .stats { grid-template-columns: repeat(3, auto); justify-content: start; } }
+.stat b { display: block; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; }
+.stat span { display: block; margin-top: 8px; font-size: 12.5px; line-height: 1.35; color: var(--ink-3); max-width: 170px; }
+.ced { margin-top: 26px; font-size: 12px; color: rgba(0, 0, 0, .5); }
+.hero-foot { height: 40px; }
+.glass { position: relative; display: block; margin-top: 30px; padding: 18px 86px 18px 18px; border-radius: 20px; background: rgba(240, 253, 255, .4); border: 1px solid #fff; -webkit-backdrop-filter: blur(18px) saturate(1.2); backdrop-filter: blur(18px) saturate(1.2); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s; }
+.glass:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(30, 55, 75, .18); }
+.glass small { display: block; font-size: 11px; color: var(--ink-3); }
+.glass strong { display: block; margin-top: 6px; font-size: 16px; font-weight: 600; letter-spacing: -.005em; }
+.glass p { margin-top: 5px; font-size: 12px; line-height: 1.4; color: var(--ink-3); }
+.glass .go { position: absolute; right: 18px; top: 50%; margin-top: -26px; width: 52px; height: 52px; border-radius: 14px; background: #fff; display: grid; place-items: center; transition: transform .4s var(--ease); }
+.glass:hover .go { transform: translate(2px, -2px) rotate(8deg); }
+.glass::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, .6) 50%, transparent 65%); transform: translateX(-120%); animation: sheen 1.6s var(--ease) 2.2s 1 both; pointer-events: none; }
 
-.wa { position: relative; display: block; margin-top: 0; padding: 17px 18px 17px; min-height: 118px; border-radius: 22px; overflow: hidden;
-  background: rgba(255, 255, 255, .34); border: 1px solid rgba(255, 255, 255, .62);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
-  box-shadow: 0 10px 30px rgba(24, 44, 64, .12), inset 0 1px 0 rgba(255, 255, 255, .7); transition: transform .35s var(--ease), box-shadow .35s; }
-.wa:active { transform: scale(.975); }
-.wa-label { font-size: 13px; color: var(--c-ink-2); }
-.wa-title { margin: 6px 0 0; font-size: 19px; line-height: 1.2; font-weight: 600; letter-spacing: -.01em; color: var(--c-ink); }
-.typed { position: relative; margin-top: 10px; max-width: 100%; font-size: 13px; line-height: 1.45; color: var(--c-ink-2); }
-.typed .ghost { visibility: hidden; display: block; }
-.typed .live { position: absolute; inset: 0; display: block; }
-.wa-go { position: absolute; top: 17px; right: 17px; width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; background: var(--c-white); color: var(--c-wa);
-  box-shadow: 0 6px 16px rgba(20, 40, 60, .14); }
-.wa-go svg { transition: transform .35s var(--ease); }
-.wa:hover .wa-go svg { transform: translate(2px, -2px); }
-.wa-go::after { content: ""; position: absolute; inset: 0; border-radius: 15px; box-shadow: 0 0 0 0 rgba(15, 122, 85, .35); animation: ring 3.4s ease-out 4.2s infinite; }
-.wa::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, .55) 50%, transparent 65%); transform: translateX(-120%); animation: sheen 1.5s var(--ease) 2.5s 1 both; pointer-events: none; }
+@media (min-width: 900px) {
+  .hero-in { height: max(640px, calc(min(100vw, 1440px) * .5958)); padding: 0; }
+  .portrait { position: absolute; inset: 0; margin: 0; height: auto; }
+  .portrait img { object-position: 0 0; }
+  .portrait::after { height: 100%; background: linear-gradient(to bottom, transparent 55%, rgba(30, 50, 66, .17) 100%); }
+  .hero-copy { position: absolute; z-index: 2; left: var(--pad); top: calc(var(--nav-h) + 45px); margin: 0; width: 46%; }
+  .h1 { margin-top: 28px; font-size: clamp(56px, 6.1vw, 88px); line-height: 1; }
+  .sub { margin-top: clamp(24px, 1.9vw, 30px); max-width: 420px; font-size: clamp(17px, 1.39vw, 20px); line-height: 1.45; }
+  .cta-row { margin-top: clamp(22px, 2.6vw, 36px); }
+  .stats { gap: clamp(32px, 5.9vw, 86px); margin-top: clamp(34px, 3.2vw, 46px); }
+  .stat b { font-size: clamp(34px, 3.05vw, 44px); }
+  .ced { margin-top: clamp(22px, 2.4vw, 34px); }
+  .glass { position: absolute; z-index: 3; right: clamp(40px, 8.33vw, 120px); bottom: clamp(40px, 5vw, 72px); width: clamp(360px, 32.8vw, 472px); margin: 0; padding: 20px 100px 20px 18px; border-radius: 12px; }
+  .hero-foot { display: none; }
+  .hero-copy { z-index: 4; }
+}
+@media (min-width: 900px) and (max-width: 1180px) { .hero-copy { width: 52%; } .stat span { max-width: 120px; } }
 
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-.btn { display: grid; place-items: center; height: 54px; border-radius: 18px; background: rgba(255, 255, 255, .92); color: var(--c-ink); font-size: 16px; font-weight: 500;
-  box-shadow: 0 8px 20px rgba(24, 44, 64, .08), inset 0 1px 0 #fff; transition: transform .3s var(--ease); }
-.btn:active, .site:active, .pill:active { transform: scale(.96); }
+/* ---------- Secciones ---------- */
+.sec { padding-block: 80px; }
+.sec-head { display: block; }
+.sec-head .sec-num { display: block; }
+.h2 { margin-top: 16px; font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 10.5vw, 44px); line-height: 1.02; letter-spacing: -.005em; }
+.cols { display: block; }
+@media (min-width: 900px) {
+  .sec { padding-block: clamp(90px, 8.3vw, 124px); }
+  .cols { display: grid; grid-template-columns: minmax(180px, 27%) 1fr; column-gap: clamp(32px, 4vw, 56px); }
+  .h2 { font-size: clamp(40px, 3.33vw, 48px); }
+}
 
-.info { margin-top: 14px; padding: 20px; border-radius: 24px; border: 1px solid var(--c-line); background: rgba(255, 255, 255, .2); }
-.info p { margin: 0; font-size: 16px; line-height: 1.45; color: #18222c; text-wrap: balance; }
-.site { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 7px; height: 56px; margin-top: 16px; border-radius: 14px; background: #000; color: #fff; font-size: 16px; font-weight: 500; transition: transform .3s var(--ease); }
-.site::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, .22) 50%, transparent 65%); transform: translateX(-120%); animation: sheen 1.4s var(--ease) 3.1s 1 both; }
+#enfoque { background: var(--bg-2); }
+.lead { margin-top: 36px; font-family: var(--serif); font-size: clamp(24px, 6.4vw, 30px); line-height: 1.25; letter-spacing: -.003em; }
+.body { margin-top: 28px; font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+@media (min-width: 900px) { .lead { margin-top: 0; font-size: clamp(26px, 2.36vw, 34px); } .body { margin-top: 36px; font-size: clamp(16px, 1.18vw, 17px); } }
 
-.foot { margin: 22px 0 0; text-align: center; font-size: 12px; line-height: 1.65; color: #44505b; }
-.foot p { margin: 0; text-wrap: balance; }
-.foot .where { margin-bottom: 4px; }
+/* Casos */
+.cases-top { display: block; }
+.cases-top .desc { margin-top: 24px; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 544px; }
+.ctrl { display: flex; align-items: center; gap: 12px; margin-top: 24px; }
+.ar { width: 55px; height: 55px; display: grid; place-items: center; border: 1px solid #000; background: #fff; transition: background .25s, color .25s, opacity .25s, transform .3s var(--ease); }
+.ar.next { background: #000; color: #fff; }
+.ar:hover:not(:disabled) { transform: translateY(-2px); }
+.ar:disabled { opacity: .3; cursor: default; }
+.count { margin-left: 16px; font-size: 13px; font-weight: 500; letter-spacing: .06em; }
+.track { display: flex; gap: 16px; margin-top: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); padding-inline: var(--pad); padding-bottom: 2px; scrollbar-width: none; overscroll-behavior-x: contain; }
+.track::-webkit-scrollbar { display: none; }
+.case { flex: 0 0 min(86vw, 420px); scroll-snap-align: start; min-height: 0; padding: 30px 28px 34px; border: 1px solid #000; background: #fff; color: #000; transition: background .5s var(--ease), color .5s var(--ease); }
+.case.is-active { background: #000; color: #fff; }
+.case header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.case .lbl { font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
+.case .who { font-size: 12px; opacity: .6; white-space: nowrap; }
+.case h3 { margin-top: 28px; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.12; letter-spacing: -.003em; }
+.case hr { border: 0; height: 1px; margin: 26px 0 22px; background: currentColor; opacity: .25; }
+.case dl > div + div { margin-top: 18px; }
+.case dt { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; opacity: .6; }
+.case dd { margin-top: 6px; font-size: 14.5px; line-height: 1.55; opacity: .92; }
+.prog { position: relative; height: 2px; margin: 44px var(--pad) 0; background: rgba(0, 0, 0, .15); }
+.prog i { position: absolute; left: 0; top: 0; bottom: 0; width: 33%; background: #000; transition: width .3s linear; }
+@media (min-width: 900px) {
+  .cases-top { display: grid; grid-template-columns: minmax(180px, 27%) 1fr; column-gap: clamp(32px, 4vw, 56px); align-items: start; }
+  .cases-top .right { padding-left: clamp(0px, 4.5vw, 64px); }
+  .cases-top .desc { margin-top: 0; }
+  .track { gap: 33px; margin-top: clamp(40px, 4.5vw, 64px); }
+  .case { flex-basis: clamp(420px, 38.8vw, 559px); min-height: clamp(540px, 40vw, 576px); padding: clamp(30px, 2.9vw, 42px); }
+  .case h3 { font-size: clamp(30px, 2.64vw, 38px); margin-top: 38px; }
+  .case hr { margin: 34px 0 28px; }
+  .case dd { font-size: 15px; }
+  .prog { margin: 64px auto 0; max-width: calc(1440px - var(--pad) * 2); width: calc(100% - var(--pad) * 2); }
+}
 
-a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
-.logo-link:focus-visible, .pill:focus-visible { outline-color: var(--ink); }
+/* Padecimientos */
+.conds { margin-top: 44px; }
+.cond { border-top: 1px solid transparent; }
+.cond button { width: 100%; display: grid; grid-template-columns: 34px 1fr 40px; align-items: center; column-gap: 8px; padding: 18px 0; }
+.cond .num { font-size: 11px; font-weight: 500; letter-spacing: .2em; align-self: center; }
+.cond .t { font-family: var(--serif); font-size: clamp(26px, 7vw, 34px); line-height: 1.1; letter-spacing: -.003em; transition: transform .45s var(--ease); }
+.cond button:hover .t { transform: translateX(8px); }
+.tg { justify-self: end; width: 40px; height: 40px; border: 1px solid #000; display: grid; place-items: center; background: #fff; transition: background .3s, color .3s; }
+.ic .v { transition: transform .4s var(--ease), opacity .3s; transform-origin: 6.5px 6.5px; }
+.cond.open .tg { background: #000; color: #fff; }
+.cond.open .ic .v { transform: scaleY(0); opacity: 0; }
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .55s var(--ease); }
+.cond.open .panel { grid-template-rows: 1fr; }
+.panel-in { overflow: hidden; min-height: 0; }
+.pbody { padding: 4px 0 30px 0; opacity: 0; transform: translateY(8px); transition: opacity .45s var(--ease) .05s, transform .55s var(--ease) .05s; }
+.cond.open .pbody { opacity: 1; transform: none; }
+.intro { font-size: 16px; line-height: 1.55; }
+.note { margin-top: 16px; font-size: 14px; line-height: 1.55; color: rgba(0, 0, 0, .55); }
+.pr { margin-top: 24px; }
+.pr > div + div { margin-top: 22px; }
+.pr h4 { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(0, 0, 0, .55); }
+.pr p { margin-top: 7px; font-size: 14px; line-height: 1.6; color: rgba(0, 0, 0, .85); }
+@media (min-width: 900px) {
+  .conds { margin-top: clamp(50px, 6vw, 86px); }
+  .cond button { grid-template-columns: 65px 1fr 47px; column-gap: 0; padding: 33px 0; }
+  .cond .t { font-size: clamp(32px, 2.78vw, 40px); }
+  .tg { width: 47px; height: 47px; }
+  .pbody { display: grid; grid-template-columns: minmax(0, 548px) minmax(0, 480px); column-gap: clamp(30px, 4.8vw, 70px); padding: 0 0 clamp(36px, 3.5vw, 50px) 65px; align-items: start; }
+  .pbody.solo { grid-template-columns: minmax(0, 548px); }
+  .pr { margin-top: 0; }
+  .intro { font-size: 16px; }
+  .note { font-size: 14px; }
+}
 
-/* ---------- Secuencia de entrada ---------- */
+/* Trayectoria */
+#trayectoria { background: var(--bg-2); }
+.tl { margin-top: 36px; }
+.tl-row { padding: 18px 0; border-top: 1px solid rgba(0, 0, 0, .1); }
+.tl-row:first-child { border-top: 0; padding-top: 0; }
+.tl dt { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.tl dd { margin-top: 6px; font-size: 16px; line-height: 1.6; color: rgba(0, 0, 0, .86); }
+.quote { margin-top: 38px; font-family: var(--serif); font-size: clamp(26px, 7vw, 30px); line-height: 1.25; max-width: 700px; }
+@media (min-width: 900px) {
+  .quote { font-size: clamp(28px, 2.36vw, 34px); }
+  .tl { margin-top: 0; }
+  .tl-row { display: grid; grid-template-columns: clamp(170px, 18vw, 253px) 1fr; padding: 0; border: 0; margin-bottom: clamp(24px, 2.6vw, 36px); }
+  .tl-row:first-child { padding: 0; }
+  .tl dt { padding-top: 6px; }
+  .tl dd { margin-top: 0; }
+  .quote { margin-top: clamp(44px, 4.4vw, 64px); }
+}
+
+/* Contacto */
+#contacto { background: #000; color: #fff; }
+.ct { margin-top: 40px; }
+.ct-row { padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+.ct-row:first-child { border-top: 0; padding-top: 0; }
+.ct dt { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
+.ct dd { margin-top: 8px; font-family: var(--serif); font-size: clamp(24px, 6.6vw, 30px); line-height: 1.2; }
+.ct dd a { background-image: linear-gradient(#fff, #fff); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .45s var(--ease); }
+.ct dd a:hover { background-size: 100% 1px; }
+.ct-row[hidden] { display: none; }
+.ct .addr { font-size: clamp(21px, 5.6vw, 24px); line-height: 1.3; }
+@media (min-width: 900px) { .ct .addr { font-size: clamp(22px, 1.75vw, 25px); } }
+.btn-white { margin-top: 36px; height: 54px; border-radius: 0; background: #fff; color: #000; padding: 0 24px; max-width: 100%; }
+.btn-white:hover { background: var(--bg); transform: translateY(-1px); }
+.legal { margin-top: 90px; font-size: 12px; line-height: 1.7; color: rgba(255, 255, 255, .7); }
+.legal p + p { margin-top: 12px; }
+@media (min-width: 900px) {
+  .ct { margin-top: 0; }
+  .ct-row { display: grid; grid-template-columns: clamp(170px, 18vw, 253px) 1fr; align-items: baseline; padding: 0; border: 0; margin-bottom: clamp(30px, 3.4vw, 49px); }
+  .ct-row:first-child { padding: 0; }
+  .ct dd { margin-top: 0; font-size: clamp(26px, 2.1vw, 30px); }
+  .btn-white { margin-top: 14px; }
+  .legal { margin-top: clamp(80px, 8.5vw, 124px); }
+}
+
+/* ---------- Animación ---------- */
+[data-r] { opacity: 0; transform: translateY(22px); filter: blur(5px); transition: opacity .9s var(--ease) var(--rd, 0s), transform .9s var(--ease) var(--rd, 0s), filter .9s var(--ease) var(--rd, 0s); }
+[data-r].in { opacity: 1; transform: none; filter: none; }
 .up { animation: up .9s var(--ease) var(--d, 0s) both; }
-.wi { animation: word 1.05s var(--ease) var(--d, 0s) both; }
 .glass-in { animation: glass 1.1s var(--ease) var(--d, 0s) both; }
-.pop { animation: pop .8s var(--spring) var(--d, 0s) both; }
 @keyframes up { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
 @keyframes word { from { transform: translateY(112%) rotate(4deg); } to { transform: none; } }
 @keyframes glass { from { opacity: 0; transform: translateY(30px) scale(.97); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
-@keyframes pop { from { opacity: 0; transform: scale(.4) rotate(-12deg); } to { opacity: 1; transform: none; } }
-@keyframes kenburns { from { transform: scale(1.12) translateY(-8px); } to { transform: scale(1) translateY(0); } }
+@keyframes settle { from { transform: scale(1.12) translateY(-10px); opacity: 0; } 35% { opacity: 1; } to { transform: scale(1.0) translateY(0); opacity: 1; } }
 @keyframes sheen { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
-@keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(15, 122, 85, .35); } 60%, 100% { box-shadow: 0 0 0 14px rgba(15, 122, 85, 0); } }
-
+@media (min-width: 900px) { .portrait img { transform: translate3d(calc(var(--mx, 0) * -10px), calc(var(--my, 0) * -6px), 0) scale(1.03); transition: transform .6s var(--ease); animation-name: settle-d; } }
+@keyframes settle-d { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .up, .wi, .glass-in, .pop, .hero video, .wa::after, .site::after, .wa-go::after { animation: none !important; }
-  .hero-shift { transition: none; }
+  html { scroll-behavior: auto; }
+  [data-r] { opacity: 1; transform: none; filter: none; transition: none; }
+  .up, .wi, .glass-in, .portrait img, .glass::after { animation: none !important; }
+  .panel, .pbody, .case, .tg, .ic .v, .cond .t { transition: none; }
 }
 </style>
-
 </head>
 <body>
-<main class="stage">
-  <article class="card" id="card">
-    <div class="hero" aria-hidden="true">
-      <div class="hero-shift">
-        <img class="poster" id="poster" alt="" src="media/poster.jpg">
-        <video id="vid" muted playsinline preload="auto" poster="media/poster.jpg" disablepictureinpicture>
-          <source src="media/doctor.mp4" type="video/mp4">
-          <source src="media/doctor.webm" type="video/webm">
-        </video>
+<a class="skip" href="#enfoque">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio" data-k="shortName" aria-label="Inicio">Dr. Almazán</a>
+    <nav class="links" aria-label="Principal">
+      <a href="#inicio">Inicio</a><a href="#enfoque">Enfoque</a><a href="#casos">Casos clínicos</a><a href="#padecimientos">Padecimientos</a><a href="#trayectoria">Trayectoria</a><a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" data-k-href="waHref" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="drawer"><span></span></button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a class="l" href="#inicio">Inicio</a><a class="l" href="#enfoque">Enfoque</a><a class="l" href="#casos">Casos clínicos</a><a class="l" href="#padecimientos">Padecimientos</a><a class="l" href="#trayectoria">Trayectoria</a><a class="l" href="#contacto">Contacto</a>
+  <a class="btn btn-dark" data-k-href="waHref" target="_blank" rel="noopener">Agendar consulta por WhatsApp</a>
+</div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-in">
+    <figure class="portrait" id="portrait" style="margin-block:0"><img src="media/doctor.jpg" width="1800" height="1072" alt="Retrato del Dr. Augusto René Almazán Corral, traumatólogo y ortopedista" fetchpriority="high"></figure>
+    <div class="hero-copy">
+      <p class="eyebrow up" style="--d:.3s">Traumatología y ortopedia</p>
+      <h1 class="h1" id="h1" aria-label="Dr. Augusto René Almazán Corral"></h1>
+      <p class="sub up" style="--d:.95s">Traumatólogo y ortopedista especialista en cadera y pelvis en Monterrey</p>
+      <div class="cta-row up" style="--d:1.1s">
+        <a class="btn btn-dark" data-k-href="waHref" target="_blank" rel="noopener">Agendar consulta por WhatsApp</a>
+        <a class="btn btn-light" href="#casos">Ver casos clínicos</a>
+      </div>
+      <div class="stats up" style="--d:1.25s">
+        <div class="stat"><b>2008</b><span>Especialista desde</span></div>
+        <div class="stat"><b><i class="count-to" data-to="300" style="font-style:normal">300</i>+</b><span>Cirugías de cadera al año</span></div>
+        <div class="stat"><b>IMSS</b><span>Módulo de Cadera y Pelvis, HTO No. 21</span></div>
+      </div>
+      <p class="ced up" style="--d:1.4s" data-k="cedulaLine"></p>
+    </div>
+    <a class="glass glass-in" style="--d:1.5s" data-k-href="waHref" target="_blank" rel="noopener">
+      <small>Contacto</small><strong>Agenda tu consulta</strong><p>Escríbeme por WhatsApp para coordinar tu valoración.</p>
+      <span class="go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <div class="hero-foot"></div>
+  </div>
+</section>
+
+<section class="sec" id="enfoque">
+  <div class="wrap cols">
+    <div class="sec-head" data-r><span class="sec-num">01</span><h2 class="h2">Mi enfoque</h2></div>
+    <div>
+      <p class="lead" data-r style="--rd:.1s">La traumatología y la ortopedia son un área de investigación constante. Permiten plantear un pronóstico funcional desde el inicio de la enfermedad, lo que crea una relación directa con el paciente y una meta en común: quitar el dolor y recuperar la función.</p>
+      <p class="body" data-r style="--rd:.18s">Esta especialidad me enseñó el valor de los detalles cotidianos: dormir sin dolor, vestirse y asearse sin ayuda. Hace años, un paciente me dijo que, gracias a su cirugía de cadera, ya podía dormir en una cama. Llevaba años durmiendo sentado en un sillón porque el dolor de la cadera hacía de la cama un tormento. Ese es el resultado que busco en cada paciente.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="casos">
+  <div class="wrap cases-top">
+    <div class="sec-head" data-r><span class="sec-num">02</span><h2 class="h2">Casos clínicos</h2></div>
+    <div class="right" data-r style="--rd:.1s">
+      <p class="desc">Casos de mi práctica, presentados sin datos que identifiquen a los pacientes. Los resultados varían según el diagnóstico, la salud general y el seguimiento de cada paciente.</p>
+      <div class="ctrl">
+        <button class="ar prev" id="prev" type="button" aria-label="Caso anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="ar next" id="next" type="button" aria-label="Caso siguiente"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <span class="count" id="count" aria-live="polite">01 / 04</span>
       </div>
     </div>
+  </div>
+  <div class="track" id="track" tabindex="0" aria-label="Casos clínicos">
 
-    <div class="content">
-      <div class="top">
-        <header class="bar">
-          <a class="logo logo-link up" style="--d:.1s" data-k="shortName" href="#"></a>
-          <a class="pill up" style="--d:.2s" data-k-href="siteUrl" href="#"><span data-k="siteLabel"></span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </header>
-        <p class="eyebrow up" style="--d:.35s" data-k="eyebrow"></p>
-        <h1 class="name" id="name" aria-label=""></h1>
-      </div>
+        <article class="case is-active" data-i="0">
+          <header><span class="lbl">Caso 01</span><span class="who">Mujer, 80 años</span></header>
+          <h3>Reconstrucción de pelvis tras secuelas de cáncer de mama</h3>
+          <hr>
+          <dl>
+            <div><dt>Diagnóstico</dt><dd>Secuelas destructivas de la pelvis a consecuencia de cáncer de mama. Por sus enfermedades acompañantes no era candidata a una reconstrucción con aloinjertos de cadáver.</dd></div>
+            <div><dt>Procedimiento</dt><dd>Reconstrucción tipo Harrington.</dd></div>
+            <div><dt>Resultado</dt><dd>Deambulación libre dentro del hogar. Seis años de seguimiento sin aflojamiento ni dolor.</dd></div>
+          </dl>
+        </article>
+        <article class="case" data-i="1">
+          <header><span class="lbl">Caso 02</span><span class="who">Hombre, 36 años</span></header>
+          <h3>Cadera destruida por artritis reumatoide juvenil</h3>
+          <hr>
+          <dl>
+            <div><dt>Diagnóstico</dt><dd>Artritis reumatoide juvenil con múltiples cirugías de cadera desde corta edad y destrucción amplia de la cadera derecha a los 27 años. Mal pronóstico funcional.</dd></div>
+            <div><dt>Procedimiento</dt><dd>Variante híbrida de la técnica copa-caja, por las pocas opciones que permitía su enfermedad de base.</dd></div>
+            <div><dt>Resultado</dt><dd>Siete años sin aflojamiento. Realiza sus actividades laborales.</dd></div>
+          </dl>
+        </article>
+        <article class="case" data-i="2">
+          <header><span class="lbl">Caso 03</span><span class="who">Mujer, 39 años</span></header>
+          <h3>Infección ósea de la pelvis tras accidente automovilístico</h3>
+          <hr>
+          <dl>
+            <div><dt>Diagnóstico</dt><dd>Secuelas de un accidente automovilístico. Dos años sin la articulación de la cadera por infecciones repetidas de la pelvis. No podía caminar.</dd></div>
+            <div><dt>Procedimiento</dt><dd>Seguimiento estrecho de la infección ósea, rehabilitación muscular junto con Medicina Física y reconstrucción ósea amplia con injerto óseo.</dd></div>
+            <div><dt>Resultado</dt><dd>Cuatro años sin recaídas ni aflojamiento. Vigilancia anual en consulta.</dd></div>
+          </dl>
+        </article>
+        <article class="case" data-i="3">
+          <header><span class="lbl">Caso 04</span><span class="who">Mujer, 18 años</span></header>
+          <h3>Tumor óseo benigno de comportamiento agresivo</h3>
+          <hr>
+          <dl>
+            <div><dt>Diagnóstico</dt><dd>Tumor óseo benigno con destrucción ósea y crisis de dolor cada vez más intensas que limitaban su vida diaria. Varias valoraciones quirúrgicas no recomendaban operar por el riesgo.</dd></div>
+            <div><dt>Procedimiento</dt><dd>Resección local amplia por vía inguinal, tras analizar el caso con la paciente y su familia.</dd></div>
+            <div><dt>Resultado</dt><dd>Dos años sin recaídas, con revisión radiológica anual. Volvió a su trabajo y continúa con sus estudios.</dd></div>
+          </dl>
+        </article>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</section>
 
-      <a class="wa glass-in" id="wa" style="--d:1.45s" data-k-href="waHref" target="_blank" rel="noopener">
-        <div class="wa-label" data-k="waLabel"></div>
-        <div class="wa-title" data-k="waTitle"></div>
-        <div class="typed" id="typed"><span class="ghost" id="ghost"></span><span class="live" id="live" aria-hidden="true"></span></div>
-        <span class="wa-go pop" style="--d:1.9s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+<section class="sec" id="padecimientos">
+  <div class="wrap">
+    <div data-r><span class="sec-num">03</span><h2 class="h2" style="max-width:680px">Padecimientos y tratamientos</h2></div>
+    <ul class="conds" data-r style="--rd:.1s">
 
-      <div class="row">
-        <a class="btn up" style="--d:1.75s" data-k="callLabel" data-k-href="callHref"></a>
-        <a class="btn up" style="--d:1.85s" data-k="mapLabel" data-k-href="mapHref" target="_blank" rel="noopener"></a>
-      </div>
+        <li class="cond open">
+          <h3><button type="button" aria-expanded="true" aria-controls="p1" id="b1">
+            <span class="num">01</span><span class="t">Coxartrosis</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p1" role="region" aria-labelledby="b1"><div class="panel-in"><div class="pbody">
+            <div class="pl"><p class="intro">Es la enfermedad degenerativa de la cadera, la articulación donde el fémur se une con la pelvis. Existen dos grupos.</p><p class="note">En la consulta se busca la causa del problema para definir el tratamiento más adecuado.</p></div><div class="pr"><div><h4>Primaria</h4><p>De origen no establecido (idiopática). Varios estudios apuntan a pequeñas alteraciones en la orientación de la cadera como causa probable.</p></div><div><h4>Secundaria</h4><p>Con un antecedente que la explica: enfermedades metabólicas (diabetes, depósito de cristales), autoinmunes (artritis, espondilitis, psoriasis), secuelas traumáticas, infecciones articulares, sobrecarga (trabajos de gran esfuerzo, sobrepeso y obesidad), intoxicación por metales pesados, tabaquismo y alcoholismo.</p></div></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p2" id="b2">
+            <span class="num">02</span><span class="t">Gonartrosis</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p2" role="region" aria-labelledby="b2"><div class="panel-in"><div class="pbody">
+            <div class="pl"><p class="intro">Es el desgaste articular más frecuente en la población. Igual que en la cadera, puede ser primaria o secundaria. El tratamiento depende de la etapa.</p><p class="note">La enfermedad avanza de forma progresiva. Una valoración a tiempo amplía las opciones de tratamiento.</p></div><div class="pr"><div><h4>Inicial</h4><p>Medicamentos orales y manejo conservador (analgésicos, terapia física, infiltraciones).</p></div><div><h4>Moderada</h4><p>Procedimientos quirúrgicos como artroscopia u osteotomía.</p></div><div><h4>Tardía</h4><p>Atención especializada de ortopedia.</p></div></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p3" id="b3">
+            <span class="num">03</span><span class="t">Artrosis de manos y pies</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p3" role="region" aria-labelledby="b3"><div class="panel-in"><div class="pbody">
+            <div class="pl"><p class="intro">Las manos y los pies pueden desgastarse por muchas enfermedades.</p></div><div class="pr"><div><h4>Manos</h4><p>Los síntomas se ignoran con facilidad y un diagnóstico tardío puede comprometer su función.</p></div><div><h4>Pies</h4><p>Causan cuadros variados, responden mejor al tratamiento conservador, dejan menos secuelas y, en algunos casos, se resuelven con cirugía menor.</p></div></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p4" id="b4">
+            <span class="num">04</span><span class="t">Síndrome doloroso lumbosacro</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p4" role="region" aria-labelledby="b4"><div class="panel-in"><div class="pbody solo">
+            <div class="pl"><p class="intro">Cuadro de dolor intenso que limita la marcha y la bipedestación. Su origen puede ser mecánico, neurológico o un esguince lumbar, por lo que requiere una evaluación diagnóstica completa. El tratamiento adecuado reduce las secuelas.</p></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p5" id="b5">
+            <span class="num">05</span><span class="t">Reemplazos articulares</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p5" role="region" aria-labelledby="b5"><div class="panel-in"><div class="pbody">
+            <div class="pl"><p class="intro">Cirugía mayor que consiste en retirar una articulación biológica dañada y colocar una articulación mecánica, conocida como prótesis: de cadera, rodilla, hombro, codo o tobillo.</p><p class="note">El objetivo principal es quitar el dolor y recuperar la función.</p></div><div class="pr"><div><h4>Cuándo se indica</h4><p>Cuando el manejo conservador ya no es suficiente, cuando el paciente inicia su atención en una etapa tardía o cuando la enfermedad avanzó tan rápido que no dejó otra alternativa.</p></div><div><h4>Tipos</h4><p>Prótesis de superficie, primarias, de revisión, tumorales, unicompartimentales, parciales y totales. Cada una tiene sus indicaciones y su pronóstico.</p></div></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p6" id="b6">
+            <span class="num">06</span><span class="t">Artroscopia</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p6" role="region" aria-labelledby="b6"><div class="panel-in"><div class="pbody solo">
+            <div class="pl"><p class="intro">Procedimiento quirúrgico mínimamente invasivo, útil para el diagnóstico y el manejo de diversos padecimientos mecánicos de la articulación. Con una indicación adecuada ofrece resultados favorables a corto plazo.</p></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p7" id="b7">
+            <span class="num">07</span><span class="t">Fracturas</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p7" role="region" aria-labelledby="b7"><div class="panel-in"><div class="pbody solo">
+            <div class="pl"><p class="intro">Una fractura es la pérdida de continuidad de un hueso en cualquiera de sus zonas anatómicas. Es dolorosa e incapacitante y se debe a un traumatismo de baja o alta energía. La atención oportuna puede lograr una recuperación funcional completa. No todas las fracturas son quirúrgicas y no todas las cirugías son resolutivas.</p><p class="note">La atención inicial debe darse en un servicio de urgencias, seguida de valoración por traumatología y ortopedia.</p></div>
+          </div></div></div>
+        </li>
+        <li class="cond">
+          <h3><button type="button" aria-expanded="false" aria-controls="p8" id="b8">
+            <span class="num">08</span><span class="t">Lesiones y enfermedades deportivas</span><span class="tg"><svg class="ic" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path class="h" d="M1.5 6.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="v" d="M6.5 1.5v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="panel" id="p8" role="region" aria-labelledby="b8"><div class="panel-in"><div class="pbody solo">
+            <div class="pl"><p class="intro">Padecimientos del sistema musculoesquelético relacionados con la actividad física o el deporte. Con frecuencia se diagnostican o se manejan de forma incorrecta. Pueden ser agudos o crónicos y dejar secuelas que afectan la vida diaria.</p><p class="note">Su manejo se basa en terapia física, infiltraciones y vendajes; algunos casos requieren cirugía. Se recomienda su valoración por traumatología y ortopedia.</p></div>
+          </div></div></div>
+        </li>
+    </ul>
+  </div>
+</section>
 
-      <section class="info up" style="--d:2s">
-        <p data-k="infoText"></p>
-        <a class="site" data-k-href="siteUrl"><span data-k="siteButton"></span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </section>
-
-      <footer class="foot up" style="--d:2.4s">
-        <p class="where" data-k="where"></p>
-        <p data-k="cedulas"></p>
-        <p data-k="urgency"></p>
-      </footer>
+<section class="sec" id="trayectoria">
+  <div class="wrap cols">
+    <div class="sec-head" data-r><span class="sec-num">04</span><h2 class="h2">Trayectoria y docencia</h2></div>
+    <div>
+      <dl class="tl" data-r style="--rd:.1s">
+          <div class="tl-row"><dt>1996–2002</dt><dd>Médico cirujano, Universidad Autónoma de Nuevo León.</dd></div>
+          <div class="tl-row"><dt>2003–2008</dt><dd>Especialidad en traumatología y ortopedia, Instituto Mexicano del Seguro Social (posterior al servicio social).</dd></div>
+          <div class="tl-row"><dt>Desde marzo de 2008</dt><dd>Ejercicio como especialista.</dd></div>
+          <div class="tl-row"><dt>Adiestramiento quirúrgico</dt><dd>Cirugía de cadera y pelvis, en el IMSS.</dd></div>
+          <div class="tl-row"><dt>Desde diciembre de 2010</dt><dd>Módulo de Cadera y Pelvis, Hospital de Traumatología y Ortopedia No. 21, IMSS. Se realizan más de 300 cirugías de cadera al año: fracturas de cadera, reemplazos primarios, cirugía de revisión, reconstrucciones óseas, intervenciones oncológicas y osteotomías preventivas.</dd></div>
+          <div class="tl-row"><dt>Docencia</dt><dd>Profesor adjunto de la especialidad de ortopedia y profesor titular del adiestramiento quirúrgico de cadera.</dd></div>
+      </dl>
+      <p class="quote" data-r>Considero fundamental la formación de nuevos especialistas, a la vanguardia de la especialidad y de sus retos.</p>
     </div>
-  </article>
+  </div>
+</section>
+
+<section class="sec dark" id="contacto">
+  <div class="wrap">
+    <div class="cols">
+      <div class="sec-head" data-r><span class="sec-num" style="color:rgba(255,255,255,.7)">05</span><h2 class="h2">Contacto</h2></div>
+      <div>
+        <dl class="ct" data-r style="--rd:.1s">
+          <div class="ct-row"><dt>Consultorio</dt><dd class="addr"><a data-k-href="mapHref" target="_blank" rel="noopener" data-k="address"></a></dd></div>
+          <div class="ct-row"><dt>Teléfono</dt><dd><a data-k-href="callHref" data-k="phoneLabel"></a></dd></div>
+          <div class="ct-row"><dt>WhatsApp</dt><dd><a data-k-href="waHref" target="_blank" rel="noopener" data-k="waLabel"></a></dd></div>
+          <div class="ct-row" data-opt="schedule"><dt>Horario</dt><dd data-k="schedule"></dd></div>
+          <div class="ct-row" data-opt="facebookUrl"><dt>Facebook</dt><dd><a data-k-href="facebookUrl" target="_blank" rel="noopener" data-k="facebookLabel"></a></dd></div>
+        </dl>
+        <a class="btn btn-white" data-k-href="waHref" target="_blank" rel="noopener" data-r style="--rd:.2s">Agendar consulta por WhatsApp</a>
+      </div>
+    </div>
+    <div class="legal">
+      <p>La información de este sitio es educativa y no sustituye una consulta médica. En caso de urgencia, acude al servicio de urgencias más cercano.</p>
+      <p><span data-k="cedulaLine"></span> · Última revisión del contenido: <span data-k="lastReview"></span></p>
+    </div>
+  </div>
+</section>
 </main>
 
 <script>
-/* ============ CONFIG: lo único que cambia de un doctor a otro ============ */
+/* ============ CONFIG: lo único que cambia de un doctor a otro (más textos y media/) ============ */
 const CONFIG = {
   shortName: "Dr. Almazán",
   nameFirst: "Dr. Augusto René",
   nameLast: "Almazán Corral",
-  eyebrow: "Traumatología y ortopedia",
-  siteLabel: "Sitio web",
-  siteButton: "Ver sitio web",
-  siteUrl: "#sitio",                              // pendiente: URL real del sitio
-  waLabel: "WhatsApp",
-  waTitle: "Escribir por WhatsApp",
-  waNumber: "528110514600",                       // por confirmar que tenga WhatsApp
+  waNumber: "528110514600",                  // por confirmar que tenga WhatsApp
+  waLabel: "81 1051 4600",
   waMessage: "Hola, Dr. Almazán. Me gustaría agendar una consulta. Mi motivo de consulta es: ",
-  callLabel: "Llamar",
-  callNumber: "+528181228122,6574",               // consultorio, ext. 6574
-  mapLabel: "Cómo llegar",
+  callNumber: "+528181228122,6574",
+  phoneLabel: "81 8122 8122, ext. 6574",
+  address: "Consultorio 1 (Lobby), Centro Médico CHRISTUS MUGUERZA Hospital Conchita, 15 de Mayo 1822, Nuevo Obispado, 64040 Monterrey, N.L.",
   mapQuery: "CHRISTUS MUGUERZA Hospital Conchita, 15 de Mayo 1822, Nuevo Obispado, Monterrey, N.L.",
-  infoText: "Conoce mi trayectoria, casos clínicos y los padecimientos que atiendo.",
-  where: "Consultorio 1 (Lobby) · Hospital Conchita, Monterrey, N.L.",
-  cedulas: "Cédulas profesionales 4409177 y 5573884",
-  urgency: "En caso de urgencia, acude al servicio de urgencias más cercano.",
-  video: { inkFrom: 1.6, inkTo: 2.6 }             // segundos del video en que el texto pasa de blanco a tinta
+  schedule: "",                              // pendiente: días y horas (si va vacío, la fila se oculta)
+  facebookUrl: "",                           // pendiente: enlace al perfil (si va vacío, la fila se oculta)
+  facebookLabel: "Augusto René Almazán Corral",
+  cedulaLine: "Cédulas profesionales 4409177 y 5573884",
+  lastReview: "noviembre de 2026"
 };
 
-/* ============ Render ============ */
-const $ = (s) => document.querySelector(s);
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hrefs = {
-  siteUrl: CONFIG.siteUrl,
   waHref: "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(CONFIG.waMessage),
   callHref: "tel:" + CONFIG.callNumber,
-  mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapQuery)
+  mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapQuery),
+  facebookUrl: CONFIG.facebookUrl
 };
-document.querySelectorAll("[data-k]").forEach((el) => { if (CONFIG[el.dataset.k] != null) el.textContent = CONFIG[el.dataset.k]; });
-document.querySelectorAll("[data-k-href]").forEach((el) => { el.setAttribute("href", hrefs[el.dataset.kHref] || CONFIG[el.dataset.kHref]); });
-document.querySelectorAll('a[href="#sitio"], a[href="#"]').forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+$$("[data-k]").forEach((el) => { if (CONFIG[el.dataset.k] != null) el.textContent = CONFIG[el.dataset.k]; });
+$$("[data-k-href]").forEach((el) => { const h = hrefs[el.dataset.kHref]; if (h) el.setAttribute("href", h); });
+$$("[data-opt]").forEach((el) => { if (!CONFIG[el.dataset.opt]) el.hidden = true; });
 
 /* Nombre: cada palabra sube desde una máscara */
-(function buildName() {
-  const h = $("#name"); h.setAttribute("aria-label", CONFIG.nameFirst + " " + CONFIG.nameLast);
-  let i = 0;
-  const add = (text, cls) => text.split(" ").forEach((word) => {
-    const w = document.createElement("span"); w.className = "w" + (cls ? " " + cls : "");
-    const inner = document.createElement("span"); inner.className = "wi"; inner.textContent = word;
-    inner.style.setProperty("--d", (0.5 + i * 0.1).toFixed(2) + "s"); i++;
-    w.appendChild(inner); h.appendChild(w); h.appendChild(document.createTextNode(" "));
-  });
-  add(CONFIG.nameFirst); const last = document.createElement("span"); last.className = "last"; h.appendChild(last);
-  const start = h.childNodes.length;
-  add(CONFIG.nameLast);
-  while (h.childNodes.length > start) last.appendChild(h.childNodes[start]);
+(function () {
+  const h = $("#h1"); let i = 0;
+  const line = (text, cls) => {
+    const row = document.createElement("span"); row.style.display = "block"; if (cls) row.className = cls;
+    text.split(" ").forEach((word, k, a) => {
+      const w = document.createElement("span"); w.className = "w";
+      const inner = document.createElement("span"); inner.className = "wi"; inner.textContent = word;
+      inner.style.setProperty("--d", (0.45 + i++ * 0.1).toFixed(2) + "s");
+      w.appendChild(inner); row.appendChild(w); if (k < a.length - 1) row.appendChild(document.createTextNode(" "));
+    });
+    h.appendChild(row);
+  };
+  line(CONFIG.nameFirst); line(CONFIG.nameLast, "last");
 })();
 
-/* Mensaje prellenado: se escribe solo */
-(function typeMessage() {
-  const full = "“" + CONFIG.waMessage.trim() + "”";
-  $("#ghost").textContent = full; const live = $("#live");
-  $("#wa").setAttribute("aria-label", CONFIG.waTitle + ". " + full);
-  if (reduce) { live.textContent = full; return; }
-  let n = 0; const start = performance.now() + 2100;
-  (function step(now) {
-    if (now < start) return requestAnimationFrame(step);
-    n = Math.min(full.length, Math.floor((now - start) / 22));
-    live.textContent = full.slice(0, n);
-    if (n < full.length) requestAnimationFrame(step);
-  })(performance.now());
+/* Menú móvil */
+const body = document.body, burger = $("#burger"), drawer = $("#drawer");
+function menu(open) { body.classList.toggle("menu-open", open); burger.setAttribute("aria-expanded", open); drawer.setAttribute("aria-hidden", !open); }
+burger.addEventListener("click", () => menu(!body.classList.contains("menu-open")));
+$$("a", drawer).forEach((a) => a.addEventListener("click", () => menu(false)));
+addEventListener("keydown", (e) => { if (e.key === "Escape") menu(false); });
+
+/* Nav: fondo al hacer scroll + sección activa */
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("scrolled", scrollY > 24);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+const links = $$(".links a"), secs = links.map((a) => $(a.getAttribute("href")));
+const spy = new IntersectionObserver((es) => es.forEach((e) => {
+  if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+secs.forEach((s) => s && spy.observe(s));
+
+/* Aparición al hacer scroll */
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+$$("[data-r]").forEach((el) => io.observe(el));
+
+/* Contador 300+ */
+(function () {
+  const el = $(".count-to"); if (!el || reduce) return;
+  const to = +el.dataset.to; el.textContent = "0";
+  const run = () => { const t0 = performance.now(); (function s(now) { const p = Math.min(1, (now - t0) / 1400); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(s); })(t0); };
+  setTimeout(run, 1500);
 })();
 
-/* Video: se reproduce una vez y se queda en el último cuadro. El texto cambia de tinta con la luz. */
-const vid = $("#vid"), poster = $("#poster"), root = document.documentElement;
-const A = [255, 255, 255], B = [13, 26, 38];
-const smooth = (p) => p * p * (3 - 2 * p);
-function setInk(p) {
-  const c = A.map((a, i) => Math.round(a + (B[i] - a) * p)).join(",");
-  root.style.setProperty("--ink", "rgb(" + c + ")");
-  root.style.setProperty("--ink-soft", "rgba(" + c + ",.72)");
-  root.style.setProperty("--ink-line", "rgba(" + c + ",.55)");
-}
-/* Relleno del borde izquierdo: sigue el color del fondo del video mientras se enciende la luz */
-const H0 = [[100, 112, 126], [135, 153, 167]], H1 = [[131, 149, 163], [160, 178, 192]], H2 = [[105, 119, 132], [179, 192, 201]];
-const mix = (pair, p) => pair[0].map((a, i) => Math.round(a + (pair[1][i] - a) * p)).join(",");
-function setLight(p) {
-  root.style.setProperty("--h0", "rgb(" + mix(H0, p) + ")");
-  root.style.setProperty("--h1", "rgb(" + mix(H1, p) + ")");
-  root.style.setProperty("--h2", "rgb(" + mix(H2, p) + ")");
-}
-function tick() {
-  const { inkFrom, inkTo } = CONFIG.video, t = vid.currentTime;
-  setInk(smooth(Math.min(1, Math.max(0, (t - inkFrom) / (inkTo - inkFrom)))));
-  setLight(Math.min(1, t / 3.1));
-  if (!vid.ended) requestAnimationFrame(tick); else { setInk(1); setLight(1); }
-}
-vid.addEventListener("playing", () => { poster.style.display = "none"; requestAnimationFrame(tick); });
-vid.addEventListener("ended", () => { setInk(1); setLight(1); });
-if (reduce) {
-  vid.addEventListener("loadedmetadata", () => { vid.currentTime = Math.max(0, vid.duration - 0.05); poster.style.display = "none"; setInk(1); setLight(1); });
-} else {
-  const go = () => vid.play().catch(() => {
-    const once = () => { vid.play().catch(() => {}); removeEventListener("pointerdown", once); };
-    addEventListener("pointerdown", once, { once: true });
-  });
-  go();
-}
+/* Carrusel de casos */
+(function () {
+  const track = $("#track"), cards = $$(".case", track), prev = $("#prev"), next = $("#next"), count = $("#count"), prog = $("#prog");
+  let idx = 0;
+  const pad = (n) => String(n).padStart(2, "0");
+  function set(i) {
+    idx = i; cards.forEach((c, k) => c.classList.toggle("is-active", k === i));
+    count.textContent = pad(i + 1) + " / " + pad(cards.length);
+    prev.disabled = i === 0; next.disabled = i === cards.length - 1;
+  }
+  function nearest() {
+    const x = track.scrollLeft, base = cards[0].offsetLeft; let best = 0, d = 1e9;
+    cards.forEach((c, k) => { const dd = Math.abs(c.offsetLeft - base - x); if (dd < d) { d = dd; best = k; } });
+    return best;
+  }
+  function go(i) { i = Math.max(0, Math.min(cards.length - 1, i)); track.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduce ? "auto" : "smooth" }); set(i); }
+  track.addEventListener("scroll", () => {
+    const max = track.scrollWidth - track.clientWidth;
+    prog.style.width = (33 + 67 * (max > 0 ? track.scrollLeft / max : 0)).toFixed(1) + "%";
+    const n = nearest(); if (n !== idx) set(n);
+  }, { passive: true });
+  prev.addEventListener("click", () => go(idx - 1));
+  next.addEventListener("click", () => go(idx + 1));
+  cards.forEach((c, k) => c.addEventListener("click", () => { if (k !== idx) go(k); }));
+  track.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { e.preventDefault(); go(idx + 1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(idx - 1); } });
+  set(0);
+})();
 
-/* Paralaje suave con el puntero (solo escritorio) */
-if (matchMedia("(pointer: fine)").matches && !reduce) {
+/* Acordeón de padecimientos (uno abierto a la vez) */
+(function () {
+  const items = $$(".cond");
+  items.forEach((it) => $("button", it).addEventListener("click", () => {
+    const open = !it.classList.contains("open");
+    items.forEach((o) => { o.classList.remove("open"); $("button", o).setAttribute("aria-expanded", "false"); });
+    if (open) { it.classList.add("open"); $("button", it).setAttribute("aria-expanded", "true"); }
+  }));
+})();
+
+/* Paralaje suave del retrato (solo escritorio con puntero) */
+if (matchMedia("(pointer: fine) and (min-width: 900px)").matches && !reduce) {
+  const root = document.documentElement;
   addEventListener("pointermove", (e) => {
     root.style.setProperty("--mx", ((e.clientX / innerWidth) - .5).toFixed(3));
     root.style.setProperty("--my", ((e.clientY / innerHeight) - .5).toFixed(3));
