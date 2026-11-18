@@ -3,14 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dr. Augusto Almazán | Tarjeta de contacto</title>
+<title>Dr. Augusto René Almazán Corral | Tarjeta de contacto</title>
+<meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#64707e">
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" href="../fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/instrument-serif-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/inter-600.woff2") format("woff2"); }
 /* Concepto: tarjeta de contacto móvil. Un retrato en video que pasa de sombra a luz; el texto cambia de blanco a tinta azul marino al ritmo de la luz. */
 :root {
+  color-scheme: light;
   --stage: #dfe5ea;
   --stage-shadow: 0 30px 80px rgba(20, 36, 52, .22);
   --serif: "Instrument Serif", "Times New Roman", serif;
@@ -34,10 +40,6 @@
   --ease: cubic-bezier(.2, .8, .2, 1);
   --spring: cubic-bezier(.34, 1.56, .64, 1);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --stage: #0f151b; --stage-shadow: 0 30px 80px rgba(0, 0, 0, .55); color-scheme: dark; }
-}
-:root[data-theme="dark"] { --stage: #0f151b; --stage-shadow: 0 30px 80px rgba(0, 0, 0, .55); color-scheme: dark; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -63,6 +65,8 @@ a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transpar
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 44px); mask-image: linear-gradient(90deg, transparent 0, #000 44px); }
 .hero video { transform-origin: 38% 22%; animation: kenburns 5.4s var(--ease) both; }
 .hero .poster { opacity: 1; }
+.hero video { opacity: 0; }
+.hero video.on { opacity: 1; }
 
 /* ---------- Contenido ---------- */
 .content { position: relative; z-index: 2; padding-block: 31px 22px;
@@ -87,7 +91,8 @@ a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transpar
 .wa-label { font-size: 13px; color: var(--c-ink-2); }
 .wa-title { margin: 4px 0 0; font-size: 19px; line-height: 1.2; font-weight: 600; letter-spacing: -.01em; color: var(--c-ink); }
 .typed { position: relative; margin-top: 4px; max-width: 100%; font-size: 13px; line-height: 1.45; color: var(--c-ink-2); }
-.typed .ghost { visibility: hidden; display: block; }
+.typed .ghost { display: block; }
+.js .typed .ghost { visibility: hidden; }
 .typed .live { position: absolute; inset: 0; display: block; }
 .wa-go { position: absolute; top: 17px; right: 17px; width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; background: var(--c-white); color: #000;
   box-shadow: 0 6px 16px rgba(20, 40, 60, .14); }
@@ -148,96 +153,49 @@ a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
     <div class="content">
       <div class="top">
         <header class="bar">
-          <a class="logo logo-link up" style="--d:.1s" data-k="shortName" href="#"></a>
-          <a class="pill up" style="--d:.2s" data-k-href="siteUrl" href="#"><span data-k="siteLabel"></span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="logo logo-link up" style="--d:.1s" data-k="shortName" href="#">Dr. Almazán</a>
+          <a class="pill up" style="--d:.2s" data-k-href="siteUrl" href="../"><span data-k="siteLabel">Sitio web</span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </header>
-        <p class="eyebrow up" style="--d:.35s" data-k="eyebrow"></p>
-        <h1 class="name" id="name" aria-label=""></h1>
+        <p class="eyebrow up" style="--d:.35s" data-k="eyebrow">Traumatología y ortopedia</p>
+        <h1 class="name" id="name" aria-label="Dr. Augusto René Almazán Corral"><span class="w"><span class="wi" style="--d:0.50s">Dr.</span></span> <span class="w"><span class="wi" style="--d:0.60s">Augusto</span></span> <span class="w"><span class="wi" style="--d:0.70s">René</span></span> <span class="last"><span class="w"><span class="wi" style="--d:0.80s">Almazán</span></span> <span class="w"><span class="wi" style="--d:0.90s">Corral</span></span></span></h1>
       </div>
 
-      <a class="wa glass-in" id="wa" style="--d:1.45s" data-k-href="waHref" target="_blank" rel="noopener">
-        <div class="wa-label" data-k="waLabel"></div>
-        <div class="wa-title" data-k="waTitle"></div>
-        <div class="typed" id="typed"><span class="ghost" id="ghost"></span><span class="live" id="live" aria-hidden="true"></span></div>
+      <a class="wa glass-in" id="wa" style="--d:1.45s" data-k-href="waHref" target="_blank" rel="noopener" href="https://wa.me/528110514600?text=Hola%2C%20Dr.%20Almaz%C3%A1n.%20Me%20gustar%C3%ADa%20agendar%20una%20consulta.%20Mi%20motivo%20de%20consulta%20es%3A%20">
+        <div class="wa-label" data-k="waLabel">WhatsApp</div>
+        <div class="wa-title" data-k="waTitle">Escribir por WhatsApp</div>
+        <div class="typed" id="typed"><span class="ghost" id="ghost">“Hola, Dr. Almazán. Me gustaría agendar una consulta. Mi motivo de consulta es:”</span><span class="live" id="live" aria-hidden="true"></span></div>
         <span class="wa-go pop" style="--d:1.9s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
       <div class="row">
-        <a class="btn up" style="--d:1.75s" data-k="callLabel" data-k-href="callHref"></a>
-        <a class="btn up" style="--d:1.85s" data-k="mapLabel" data-k-href="mapHref" target="_blank" rel="noopener"></a>
+        <a class="btn up" style="--d:1.75s" data-k="callLabel" data-k-href="callHref" href="tel:+528181228122,6574">Llamar</a>
+        <a class="btn up" style="--d:1.85s" data-k="mapLabel" data-k-href="mapHref" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=CHRISTUS%20MUGUERZA%20Hospital%20Conchita%2C%2015%20de%20Mayo%201822%2C%20Nuevo%20Obispado%2C%20Monterrey%2C%20N.L.">Cómo llegar</a>
       </div>
 
       <section class="info up" style="--d:2s">
-        <p data-k="infoText"></p>
-        <a class="site" data-k-href="siteUrl"><span data-k="siteButton"></span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p data-k="infoText">Conoce mi trayectoria, casos clínicos y los padecimientos que atiendo.</p>
+        <a class="site" data-k-href="siteUrl" href="../"><span data-k="siteButton">Ver sitio web</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M4 3h5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </section>
 
       <footer class="foot up" style="--d:2.4s">
-        <p data-k="cedulas"></p>
-        <p data-k="urgency"></p>
+        <p data-k="cedulas">Cédulas profesionales 4409177 y 5573884</p>
+        <p data-k="urgency">En caso de urgencia, acude al servicio de urgencias más cercano.</p>
       </footer>
     </div>
   </article>
 </main>
 
 <script>
-/* ============ CONFIG: lo único que cambia de un doctor a otro ============ */
-const CONFIG = {
-  shortName: "Dr. Almazán",
-  nameFirst: "Dr. Augusto René",
-  nameLast: "Almazán Corral",
-  eyebrow: "Traumatología y ortopedia",
-  siteLabel: "Sitio web",
-  siteButton: "Ver sitio web",
-  siteUrl: "../",                                 // el sitio vive en la raíz; la tarjeta en /tarjeta/
-  waLabel: "WhatsApp",
-  waTitle: "Escribir por WhatsApp",
-  waNumber: "528110514600",                       // por confirmar que tenga WhatsApp
-  waMessage: "Hola, Dr. Almazán. Me gustaría agendar una consulta. Mi motivo de consulta es: ",
-  callLabel: "Llamar",
-  callNumber: "+528181228122,6574",               // consultorio, ext. 6574
-  mapLabel: "Cómo llegar",
-  mapQuery: "CHRISTUS MUGUERZA Hospital Conchita, 15 de Mayo 1822, Nuevo Obispado, Monterrey, N.L.",
-  infoText: "Conoce mi trayectoria, casos clínicos y los padecimientos que atiendo.",
-  cedulas: "Cédulas profesionales 4409177 y 5573884",
-  urgency: "En caso de urgencia, acude al servicio de urgencias más cercano.",
-  video: { inkFrom: 1.6, inkTo: 2.6 }             // segundos del video en que el texto pasa de blanco a tinta
-};
-
-/* ============ Render ============ */
+document.documentElement.classList.add("js");
 const $ = (s) => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const hrefs = {
-  siteUrl: CONFIG.siteUrl,
-  waHref: "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(CONFIG.waMessage),
-  callHref: "tel:" + CONFIG.callNumber,
-  mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.mapQuery)
-};
-document.querySelectorAll("[data-k]").forEach((el) => { if (CONFIG[el.dataset.k] != null) el.textContent = CONFIG[el.dataset.k]; });
-document.querySelectorAll("[data-k-href]").forEach((el) => { el.setAttribute("href", hrefs[el.dataset.kHref] || CONFIG[el.dataset.kHref]); });
-document.querySelectorAll('a[href="#sitio"], a[href="#"]').forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
-
-/* Nombre: cada palabra sube desde una máscara */
-(function buildName() {
-  const h = $("#name"); h.setAttribute("aria-label", CONFIG.nameFirst + " " + CONFIG.nameLast);
-  let i = 0;
-  const add = (text, cls) => text.split(" ").forEach((word) => {
-    const w = document.createElement("span"); w.className = "w" + (cls ? " " + cls : "");
-    const inner = document.createElement("span"); inner.className = "wi"; inner.textContent = word;
-    inner.style.setProperty("--d", (0.5 + i * 0.1).toFixed(2) + "s"); i++;
-    w.appendChild(inner); h.appendChild(w); h.appendChild(document.createTextNode(" "));
-  });
-  add(CONFIG.nameFirst); const last = document.createElement("span"); last.className = "last"; h.appendChild(last);
-  const start = h.childNodes.length;
-  add(CONFIG.nameLast);
-  while (h.childNodes.length > start) last.appendChild(h.childNodes[start]);
-})();
+const VIDEO = { inkFrom: 1.6, inkTo: 2.6 };   // segundos del video en que el texto pasa de blanco a tinta
+document.querySelectorAll('a[href="#"]').forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
 
 /* Mensaje prellenado: se escribe solo */
 (function typeMessage() {
-  const full = "“" + CONFIG.waMessage.trim() + "”";
-  $("#ghost").textContent = full; const live = $("#live");
-  $("#wa").setAttribute("aria-label", CONFIG.waTitle + ". " + full);
+  const full = $("#ghost").textContent; const live = $("#live");
+  $("#wa").setAttribute("aria-label", $(".wa-title").textContent + ". " + full);
   if (reduce) { live.textContent = full; return; }
   let n = 0; const start = performance.now() + 2100;
   (function step(now) {
@@ -267,15 +225,15 @@ function setLight(p) {
   root.style.setProperty("--h2", "rgb(" + mix(H2, p) + ")");
 }
 function tick() {
-  const { inkFrom, inkTo } = CONFIG.video, t = vid.currentTime;
+  const { inkFrom, inkTo } = VIDEO, t = vid.currentTime;
   setInk(smooth(Math.min(1, Math.max(0, (t - inkFrom) / (inkTo - inkFrom)))));
   setLight(Math.min(1, t / 3.1));
   if (!vid.ended) requestAnimationFrame(tick); else { setInk(1); setLight(1); }
 }
-vid.addEventListener("playing", () => { poster.style.display = "none"; requestAnimationFrame(tick); });
+vid.addEventListener("playing", () => { vid.classList.add("on"); poster.style.display = "none"; requestAnimationFrame(tick); });
 vid.addEventListener("ended", () => { setInk(1); setLight(1); });
 if (reduce) {
-  vid.addEventListener("loadedmetadata", () => { vid.currentTime = Math.max(0, vid.duration - 0.05); poster.style.display = "none"; setInk(1); setLight(1); });
+  vid.addEventListener("loadedmetadata", () => { vid.currentTime = Math.max(0, vid.duration - 0.05); vid.classList.add("on"); poster.style.display = "none"; setInk(1); setLight(1); });
 } else {
   const go = () => vid.play().catch(() => {
     const once = () => { vid.play().catch(() => {}); removeEventListener("pointerdown", once); };
